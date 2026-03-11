@@ -43,8 +43,8 @@ export default function Contact() {
             <div className="flex flex-col gap-[14px]">
               {[
                 { icon: "✉️", label: SITE.email, href: `mailto:${SITE.email}` },
-                { icon: <GithubIcon />, label: "github.com/alexchen", href: SITE.github },
-                { icon: "💼", label: "linkedin.com/in/alexchen", href: SITE.linkedin },
+                { icon: <GithubIcon />, label: "https://github.com/AdrianEarl000", href: SITE.github },
+                { icon: "💼", label: "linkedin.com/in/adrianearl", href: SITE.linkedin },
               ].map((link) => (
                 <a
                   key={link.label}

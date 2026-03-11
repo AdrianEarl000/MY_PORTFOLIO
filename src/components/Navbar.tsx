@@ -42,7 +42,7 @@ export default function Navbar() {
             href="#hero"
             className="font-syne font-extrabold text-xl text-txt tracking-tight no-underline"
           >
-            Alex<span className="text-accent-2">.</span>
+            Adrian<span className="text-accent-2">.</span>
           </Link>
 
           {/* Desktop links */}

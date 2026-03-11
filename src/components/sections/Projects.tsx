@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import SectionLabel from "@/components/ui/SectionLabel";
 import Reveal from "@/components/ui/Reveal";
 import { PROJECTS } from "@/lib/data";
+import Image from "next/image";
 
 const GithubIcon = () => (
   <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
@@ -29,17 +30,28 @@ function ProjectCard({
         project.featured ? "col-span-2 max-sm:col-span-1" : ""
       }`}
     >
-      {/* Image placeholder */}
+     {/* Image container */}
       <div
         className={`relative w-full aspect-video flex items-center justify-center overflow-hidden bg-gradient-to-br ${project.bgClass}`}
       >
         <div
-          className={`absolute inset-0 bg-gradient-to-br ${project.accentClass} group-hover:opacity-80 transition-opacity duration-500`}
+          className={`absolute inset-0 bg-gradient-to-br ${project.accentClass} group-hover:opacity-80 transition-opacity duration-500 z-10`}
         />
-        <span className="relative z-10 text-[40px] group-hover:scale-110 transition-transform duration-500">
-          {project.emoji}
-        </span>
-        <div className="absolute bottom-5 left-5 font-mono text-[11px] text-white/30 tracking-[2px] uppercase">
+        
+        {project.image ? (
+          <Image 
+            src={project.image} 
+            alt={project.title} 
+            fill 
+            className="object-cover group-hover:scale-105 transition-transform duration-500" 
+          />
+        ) : (
+          <span className="relative z-20 text-[40px] group-hover:scale-110 transition-transform duration-500">
+            {project.emoji}
+          </span>
+        )}
+
+        <div className="absolute bottom-5 left-5 font-mono text-[11px] text-white/80 tracking-[2px] uppercase z-20">
           {project.label}
         </div>
       </div>

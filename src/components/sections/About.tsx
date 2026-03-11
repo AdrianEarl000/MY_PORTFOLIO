@@ -14,21 +14,29 @@ export default function About() {
           <Reveal direction="left">
             <div className="relative max-h-[520px] aspect-[3/4] max-lg:aspect-video max-lg:max-h-[300px]">
               <div
-                className="w-full h-full rounded-2xl border border-border flex items-center justify-center text-[80px] relative overflow-hidden"
-                style={{
-                  background:
-                    "linear-gradient(135deg, rgba(124,106,247,0.15) 0%, rgba(45,212,191,0.1) 100%)",
-                }}
-              >
-                <div
-                  className="absolute inset-0"
+                  className="w-full h-full rounded-2xl border border-border flex items-center justify-center relative overflow-hidden"
                   style={{
-                    background:
-                      "radial-gradient(circle at 30% 30%, rgba(124,106,247,0.2), transparent 60%)",
-                  }}
-                />
-                <span className="relative z-10">👨‍💻</span>
-              </div>
+                  background:
+                            "linear-gradient(135deg, rgba(124,106,247,0.15) 0%, rgba(45,212,191,0.1) 100%)",
+  }}
+>
+  {/* You can keep this background glow if your image is a transparent PNG, 
+      or remove it if your picture has a solid background */}
+  <div
+    className="absolute inset-0"
+    style={{
+      background:
+        "radial-gradient(circle at 30% 30%, rgba(124,106,247,0.2), transparent 60%)",
+    }}
+  />
+
+  {/* Your Picture */}
+  <img 
+    src="/your-picture-name.jpg" 
+    alt="My Profile Picture" 
+     className="w-full h-full object-cover relative z-10"
+/>
+</div>
 
               {/* Floating badge */}
               <div className="absolute -bottom-5 -right-5 px-6 py-4 bg-bg border border-border-2 rounded-2xl backdrop-blur-md max-lg:right-4">
@@ -52,7 +60,7 @@ export default function About() {
 
             <div className="mt-6 space-y-4">
               <p className="text-[15px] text-txt-2 leading-[1.8] font-light">
-                Hi, I&apos;m Alex — a{" "}
+                Hi, I&apos;m Adrian Earl — a{" "}
                 <strong className="text-txt font-medium">Full Stack Developer</strong> based in
                 San Francisco with 5+ years of experience turning ambitious ideas into
                 production-ready products.

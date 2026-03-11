@@ -1,12 +1,12 @@
 export const SITE = {
-  name: "Alex Chen",
+  name: "Adrian Earl Abade",
   role: "Full Stack Developer",
   tagline:
     "Building modern, scalable web applications that drive real results — from concept to production with precision and purpose.",
-  email: "alex@example.com",
-  github: "https://github.com/alexchen",
-  linkedin: "https://linkedin.com/in/alexchen",
-  twitter: "https://twitter.com/alexchen",
+  email: "adrianearl@example.com",
+  github: "https://github.com/AdrianEarl000",
+  linkedin: "https://linkedin.com/in/Adrian Earl",
+  twitter: "https://twitter.com/Adrian Earl",
   stats: [
     { value: "5", suffix: "+", label: "Years Experience" },
     { value: "40", suffix: "+", label: "Projects Delivered" },
@@ -42,18 +42,18 @@ export const TECH_STACK = {
 
 export const PROJECTS = [
   {
-    id: "novabuy",
-    title: "NovaBuy — Modern E-Commerce Platform",
+    id: "viowrite",
+    title: "VioWrite — AI Content Generator",
     description:
-      "A high-performance e-commerce platform built for a fashion retailer processing 10K+ daily transactions. Features real-time inventory, AI-powered recommendations, and a seamless checkout with 99.9% uptime.",
-    tags: ["Next.js", "Stripe", "Prisma", "PostgreSQL"],
-    emoji: "🛒",
-    bgClass: "from-[#1a1033] to-[#0d1a2e]",
-    accentClass: "from-violet-500/20 to-teal-500/10",
-    label: "Commerce Platform",
-    featured: true,
-    demo: "#",
-    github: "#",
+      "A full-stack SaaS application that generates SEO blog posts, viral social captions, and marketing copy using Google's Gemini AI.",
+    tags: ["Next.js 14", "Google Gemini", "Prisma", "PostgreSQL"],
+    image: "/images/viowritre.png", 
+    bgClass: "from-[#130b29] to-[#2d1b4e]",
+    accentClass: "from-violet-500/20 to-fuchsia-500/20",
+    label: "AI SaaS Tool",
+    featured: true, 
+    demo: "https://ai-content-generator-delta-three.vercel.app/",
+    github: "https://github.com/AdrianEarl000/AI-content-Generator",
   },
   {
     id: "datapulse",
@@ -141,20 +141,20 @@ export const TESTIMONIALS = [
     role: "CEO, NovaBuy Inc.",
     avatar: "🧑",
     avatarClass: "from-violet-500 to-purple-700",
-    text: "Alex delivered our platform 2 weeks ahead of schedule. The code quality was exceptional — our engineering team was genuinely impressed. He thinks like a product engineer, not just a contractor.",
+    text: "Earl delivered our platform 2 weeks ahead of schedule. The code quality was exceptional — our engineering team was genuinely impressed. He thinks like a product engineer, not just a contractor.",
   },
   {
     name: "James Okonkwo",
     role: "CTO, DataPulse",
     avatar: "👩",
     avatarClass: "from-pink-400 to-rose-500",
-    text: "We hired Alex to rebuild our analytics dashboard from scratch. The result was a 60% improvement in load times and a UI our customers actually love. Truly full stack — handles design constraints like a pro.",
+    text: "We hired Earl to rebuild our analytics dashboard from scratch. The result was a 60% improvement in load times and a UI our customers actually love. Truly full stack — handles design constraints like a pro.",
   },
   {
     name: "Priya Sharma",
     role: "Product Lead, ScribeAI",
     avatar: "🧑‍🦱",
     avatarClass: "from-sky-400 to-cyan-400",
-    text: "Working with Alex was seamless. His communication is excellent, he asks the right questions upfront, and he consistently goes above and beyond. Our product shipped with zero post-launch bugs.",
+    text: "Working with Earl was seamless. His communication is excellent, he asks the right questions upfront, and he consistently goes above and beyond. Our product shipped with zero post-launch bugs.",
   },
 ];

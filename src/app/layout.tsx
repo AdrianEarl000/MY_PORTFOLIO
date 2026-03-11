@@ -25,7 +25,7 @@ const dmMono = DM_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Alex Chen — Full Stack Developer",
+  title: "Adrian Earl Abade — Full Stack Developer",
   description:
     "Full Stack Developer crafting modern, scalable web applications with precision and purpose. Available for freelance projects.",
   keywords: [
@@ -36,9 +36,9 @@ export const metadata: Metadata = {
     "Node.js",
     "Web Developer",
   ],
-  authors: [{ name: "Alex Chen" }],
+  authors: [{ name: "Adrian Earl Abade" }],
   openGraph: {
-    title: "Alex Chen — Full Stack Developer",
+    title: "Adrian Earl Abade — Full Stack Developer",
     description:
       "Building modern, scalable web applications with precision and purpose.",
     type: "website",
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Alex Chen — Full Stack Developer",
+    title: "Adrian Earl Abade — Full Stack Developer",
     description:
       "Building modern, scalable web applications with precision and purpose.",
   },

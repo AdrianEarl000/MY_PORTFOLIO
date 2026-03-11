@@ -22,11 +22,11 @@ export default function Footer() {
             href="#hero"
             className="font-syne font-extrabold text-[18px] text-txt no-underline"
           >
-            Alex<span className="text-accent-2">.</span>
+            Earl<span className="text-accent-2">.</span>
           </Link>
 
           <p className="text-[13px] text-txt-3">
-            © {new Date().getFullYear()} Alex Chen · Built with{" "}
+            © {new Date().getFullYear()} Adrian Earl · Built with{" "}
             <span className="text-accent-2">Next.js</span> &amp;{" "}
             <span className="text-accent-2">Tailwind CSS</span>
           </p>
