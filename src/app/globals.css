@@ -2,8 +2,55 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Font imports for both Neon and Retro modes */
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap');
+
 :root {
+  /* Your original variables */
   --glow: rgba(124, 106, 247, 0.2);
+
+  /* Theme System Defaults (Neon Mode) */
+  --bg-base:                #0D0D12;
+  --bg-surface:             #1A1A24;
+  --bg-elevated:            #22223A;
+  --bg-overlay:             rgba(13,13,18,0.85);
+
+  --accent-primary:         #7C6AF7;
+  --accent-secondary:       #2DD4BF;
+  --accent-primary-glow:    rgba(124,106,247,0.35);
+  --accent-secondary-glow:  rgba(45,212,191,0.35);
+
+  --text-primary:           #F0F0FF;
+  --text-secondary:         #A0A0C0;
+  --text-muted:             #505070;
+  --text-accent:            #7C6AF7;
+
+  --border-subtle:          rgba(255,255,255,0.07);
+  --border-accent:          rgba(124,106,247,0.4);
+
+  --glow-primary:           0 0 40px rgba(124,106,247,0.3), 0 0 80px rgba(124,106,247,0.1);
+  --glow-secondary:         0 0 40px rgba(45,212,191,0.3),  0 0 80px rgba(45,212,191,0.1);
+
+  --font-display:           'Syne', sans-serif;
+  --font-body:              'DM Sans', sans-serif;
+  --font-mono:              'JetBrains Mono', monospace;
+}
+
+/* ── Universal transitions for theme switching ──────────────────── */
+*,
+*::before,
+*::after {
+  transition-property: background-color, border-color, color, box-shadow, opacity, fill, stroke;
+  transition-duration: 0.55s;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Opt specific elements (like your 3D canvas) out of blanket transition */
+canvas,
+svg,
+[data-no-theme-transition],
+[data-no-theme-transition] * {
+  transition: none !important;
 }
 
 html {
@@ -11,12 +58,13 @@ html {
 }
 
 body {
-  background-color: #070708;
-  color: #f0f0f2;
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-body);
   overflow-x: hidden;
 }
 
-/* Noise texture overlay */
+/* Your Base Noise texture overlay */
 body::before {
   content: '';
   position: fixed;
@@ -27,14 +75,29 @@ body::before {
   opacity: 0.4;
 }
 
-/* Scrollbar */
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: #070708; }
-::-webkit-scrollbar-thumb { background: #7c6af7; border-radius: 2px; }
+/* Scrollbar (Updated to use theme colors) */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-base); }
+::-webkit-scrollbar-thumb { 
+  background: var(--accent-primary); 
+  border-radius: 3px; 
+  box-shadow: 0 0 8px var(--accent-primary-glow);
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  color: var(--text-primary);
+}
+
+code, pre, .font-mono {
+  font-family: var(--font-mono);
+}
 
 @layer utilities {
+  /* Your original utilities (Upgraded for themes) */
   .gradient-text {
-    background: linear-gradient(135deg, #a78bfa 0%, #2dd4bf 100%);
+    background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -48,10 +111,99 @@ body::before {
   }
 
   .glow-shadow {
-    box-shadow: 0 16px 40px var(--glow);
+    box-shadow: var(--glow-primary);
   }
 
   .text-balance {
     text-wrap: balance;
   }
+
+  /* Theme Utilities */
+  .surface {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+  }
+
+  .surface-elevated {
+    background-color: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+  }
+
+  .surface-overlay {
+    background-color: var(--bg-overlay);
+    backdrop-filter: blur(12px);
+  }
+
+  .accent-primary   { color: var(--accent-primary); }
+  .accent-secondary { color: var(--accent-secondary); }
+  .bg-accent-primary   { background-color: var(--accent-primary); }
+  .bg-accent-secondary { background-color: var(--accent-secondary); }
+  .border-accent { border-color: var(--border-accent); }
+
+  .glow-primary   { box-shadow: var(--glow-primary); }
+  .glow-secondary { box-shadow: var(--glow-secondary); }
+
+  .text-glow-primary {
+    text-shadow: 0 0 20px var(--accent-primary-glow), 0 0 40px var(--accent-primary-glow);
+  }
+}
+
+/* Theme standard components */
+.btn-primary {
+  background: var(--accent-primary);
+  color: #fff;
+  border: 1px solid transparent;
+  box-shadow: 0 0 20px var(--accent-primary-glow);
+}
+.btn-primary:hover {
+  box-shadow: 0 0 32px var(--accent-primary-glow), 0 0 60px var(--accent-primary-glow);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--accent-primary);
+  border: 1px solid var(--border-accent);
+}
+.btn-outline:hover {
+  background: var(--accent-primary-glow);
+  box-shadow: var(--glow-primary);
+}
+
+.card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.card:hover {
+  border-color: var(--border-accent);
+  box-shadow: var(--glow-primary);
+}
+
+/* ── Retro Hacker Mode Overrides ────────────────────────────────── */
+[data-theme="retro"] h1,
+[data-theme="retro"] h2,
+[data-theme="retro"] h3 {
+  letter-spacing: 0.04em;
+}
+
+[data-theme="retro"] .card, 
+[data-theme="retro"] .glass-card {
+  border-color: rgba(0,255,156,0.12);
+}
+
+[data-theme="retro"] .card:hover, 
+[data-theme="retro"] .glass-card:hover {
+  border-color: rgba(0,255,156,0.4);
+  box-shadow: 0 0 20px rgba(0,255,156,0.12), 0 0 60px rgba(0,255,156,0.05);
+}
+
+[data-theme="retro"] code,
+[data-theme="retro"] pre {
+  color: var(--accent-primary);
+  text-shadow: 0 0 8px rgba(0,255,156,0.4);
+}
+
+/* Dims your base noise slightly so the retro scanlines pop more */
+[data-theme="retro"] body::before {
+  opacity: 0.15; 
 }

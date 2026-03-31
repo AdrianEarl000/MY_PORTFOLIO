@@ -1,0 +1,1 @@
+export type PortalState = "idle" | "hovering" | "transitioning" | "portal";

@@ -32,14 +32,14 @@ export default function About() {
 
   {/* Your Picture */}
   <img 
-    src="/your-picture-name.jpg" 
+    src="/images/profile.jpg" 
     alt="My Profile Picture" 
      className="w-full h-full object-cover relative z-10"
 />
 </div>
 
               {/* Floating badge */}
-              <div className="absolute -bottom-5 -right-5 px-6 py-4 bg-bg border border-border-2 rounded-2xl backdrop-blur-md max-lg:right-4">
+              <div className="absolute -bottom-5 -right-5 px-6 py-4 bg-bg border border-border-2 rounded-2xl backdrop-blur-md max-lg:right-4 z-20">
                 <div className="font-syne font-extrabold text-[28px] text-txt tracking-[-1px]">
                   40<span className="text-accent-2">+</span>
                 </div>

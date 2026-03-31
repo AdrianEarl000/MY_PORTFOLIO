@@ -3,7 +3,7 @@ export const SITE = {
   role: "Full Stack Developer",
   tagline:
     "Building modern, scalable web applications that drive real results — from concept to production with precision and purpose.",
-  email: "adrianearl@example.com",
+  email: "adrianearl3@gmail.com",
   github: "https://github.com/AdrianEarl000",
   linkedin: "https://linkedin.com/in/Adrian Earl",
   twitter: "https://twitter.com/Adrian Earl",
@@ -42,6 +42,64 @@ export const TECH_STACK = {
 
 export const PROJECTS = [
   {
+    id: "smp-agency",
+  title: "SMP Agency — Business Website",
+  description:
+  "Developed a high-performance, responsive business website for SMP Agency using Next.js 14 and Tailwind CSS. Optimized for fast load times, SEO, and cross-device compatibility, while delivering a clean, modern UI that enhances user engagement and brand presence.",
+  tags: ["Next.js 14", "Tailwind CSS", "Figma", "GitHub"],
+  image: "/images/smp-agency1.png",
+  bgClass: "from-[#0f172a] to-[#1e293b]",
+  accentClass: "from-blue-500/20 to-indigo-500/20",
+  label: "Business Website",
+  featured: true,
+  demo: "https://www.smpagency.co.uk/",
+  github: "https://github.com/smpagencyhub-lgtm/smp-agency.git",
+  },
+  
+  {
+    id: "syncspace",
+  title: "SyncSpace — Full-Stack Real-Time Collaboration App",
+  description:
+    "A full-stack real-time collaboration application featuring live chat, collaborative whiteboard, and user activity tracking. Built with scalable architecture and WebSocket-based communication.",
+  tags: ["Next.js", "TypeScript", "LiveBlocks", "Prisma", "PostgreSQL"],
+  image: "/images/space.png",
+  gClass: "from-[#0d1a1a] to-[#0d2e2e]",
+  accentClass: "from-cyan-500/10 to-blue-500/10",
+  label: "Full-Stack Project",
+  featured: true,
+  demo: "https://sync-space-phi-nine.vercel.app/",
+  github: "https://github.com/AdrianEarl000/SyncSpace.git",
+  },
+      {
+    id: "hris-intern",
+    title: "HRIS — Employee Management System",
+    description:
+      "A Human Resources Information System built to streamline HR workflows, securely manage employee records, and optimize organizational data management.",
+    tags: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Tailwind CSS"],
+    image: "/images/hris.png",
+    bgClass: "from-[#0a111a] to-[#1a110a]", 
+    accentClass: "from-blue-500/8 to-cyan-500/12", 
+    label: "Internship Project",
+    featured: true, 
+    demo: "#",
+    github: "https://github.com/pdsorote/hris-intern.git", 
+},
+
+  {
+    id: "flowboard",
+    title: "FlowBoard — Collaborative Task Management",
+    description:
+      "A collaborative task management platform designed to streamline team workflows, organize projects, and track progress seamlessly.",
+    tags: ["Next.js", "Prisma", "PostgreSQL", "Tailwind CSS"],
+    image: "/images/flow.png",
+    bgClass: "from-[#0d121a] to-[#120d1a]", 
+    accentClass: "from-blue-500/8 to-indigo-500/12", 
+    label: "Task Management",
+    featured: true,
+    demo: "#",
+    github: "#",
+  },
+  {
     id: "viowrite",
     title: "VioWrite — AI Content Generator",
     description:
@@ -56,47 +114,35 @@ export const PROJECTS = [
     github: "https://github.com/AdrianEarl000/AI-content-Generator",
   },
   {
-    id: "datapulse",
-    title: "DataPulse Analytics Dashboard",
+    id: "pos-inventory",
+    title: "POS & Inventory Management",
     description:
-      "Real-time analytics SaaS with live data streaming, custom chart builders, and multi-tenant architecture serving 500+ businesses.",
-    tags: ["React", "Node.js", "Redis"],
-    emoji: "📊",
-    bgClass: "from-[#0d2018] to-[#1a0d2e]",
-    accentClass: "from-teal-500/15 to-violet-500/10",
-    label: "Analytics SaaS",
+      "A comprehensive Point of Sale and inventory tracking application designed to process sales transactions and manage product stock efficiently.",
+    tags: ["C#", ".NET", "SQL Server"],
+    emoji: "🛒",
+    bgClass: "from-[#0a1a12] to-[#121a0a]",
+    accentClass: "from-emerald-500/8 to-green-500/12",
+    label: "Desktop App",
     featured: false,
     demo: "#",
-    github: "#",
-  },
-  {
-    id: "scribeai",
-    title: "ScribeAI — Content Generation Tool",
-    description:
-      "AI-powered content studio that generates SEO-optimized long-form content. Processes 50K+ requests/month with streaming responses.",
-    tags: ["Next.js", "OpenAI", "Vercel AI SDK"],
-    emoji: "🤖",
-    bgClass: "from-[#1a1a0d] to-[#2e1a0d]",
-    accentClass: "from-amber-500/10 to-violet-500/10",
-    label: "AI Tool",
-    featured: false,
-    demo: "#",
-    github: "#",
-  },
-  {
-    id: "relay",
-    title: "Relay — Real-time Team Chat",
-    description:
-      "A Slack-inspired workspace tool with real-time messaging, threads, file sharing, and role-based access. Built for async-first teams.",
-    tags: ["Next.js", "WebSockets", "Prisma"],
-    emoji: "💬",
-    bgClass: "from-[#0d1a1a] to-[#1a0d1a]",
-    accentClass: "from-teal-500/8 to-violet-500/12",
-    label: "Team Chat",
-    featured: false,
-    demo: "#",
-    github: "#",
-  },
+    github: "https://github.com/AdrianEarl000/POS-InventoryManagementSystem.git", // Remember to update this URL!
+},
+{
+      id: "cat-breed-classifier",
+      title: "Cat Breed Classifier AI",
+      description:
+        "A desktop application featuring a custom-trained machine learning model built with ML.NET to analyze images and accurately identify various cat breeds.",
+      tags: ["C#", "ML.NET", ".NET", "WinForms"],
+      emoji: "🐱",
+      bgClass: "from-[#1a110a] to-[#140d1a]", 
+      accentClass: "from-orange-500/8 to-amber-500/12", 
+      label: "Machine Learning",
+      featured: false,
+      demo: "#",
+      github: "https://github.com/AdrianEarl000/CatBreedClassifier-FINAL-",
+    },
+
+
 ];
 
 export const PROCESS_STEPS = [

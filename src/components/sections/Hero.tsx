@@ -4,6 +4,9 @@ import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { SITE } from "@/lib/data";
+import Workspace3D from "@/components/ui/Workspace/Workspace3D";
+// import Terminal from "@/components/ui/Terminal";
+// import Scene3D from "@/components/ui/Scene3D"; // <-- Added Import
 
 function fadeUp(delay = 0) {
   return {
@@ -80,7 +83,33 @@ export default function Hero() {
           WebkitMaskImage: "radial-gradient(ellipse 60% 60% at 50% 50%, black, transparent)",
         }}
       />
+      {/* INTERACTIVE DESIGNS */}
 
+      {/*2 Interactive Terminal */}
+      {/* <div className="absolute top-1/2 -translate-y-1/2 right-10 w-[45%] z-20 max-lg:hidden perspective-1000">
+        <motion.div
+          initial={{ opacity: 0, x: 50, rotateY: -10 }}
+          animate={{ opacity: 1, x: 0, rotateY: -15 }}
+          transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
+          className="w-full transform-gpu"
+          style={{ transformStyle: 'preserve-3d' }}
+        > */}
+
+          {/* A subtle glowing drop-shadow behind the terminal */}
+          {/* <div className="absolute -inset-4 bg-gradient-to-r from-accent-2/20 to-teal/20 blur-2xl -z-10 rounded-full opacity-50" />
+          <Terminal />
+        </motion.div>
+      </div> */}
+
+      {/* 3D Workspace Scene */}
+      <div className="absolute top-1/2 -translate-y-[45%] right-0 w-[55%] z-20 max-lg:hidden flex justify-center items-center">
+        {/* Subtle glowing backdrop so the dark desk pops against your dark background */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-to-tr from-accent-2/10 to-teal/10 blur-[120px] -z-10 rounded-full opacity-50 pointer-events-none" />
+        
+        <Workspace3D />
+      </div>
+
+      {/* Main Content */}
       <div className="max-w-[1200px] mx-auto px-10 relative z-10 w-full">
         <div className="max-w-[860px]">
           {/* Badge */}
@@ -176,7 +205,7 @@ export default function Hero() {
       </div>
 
       {/* Scroll indicator */}
-      <motion.div
+      {/* <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.8, duration: 0.6 }}
@@ -187,7 +216,7 @@ export default function Hero() {
           style={{ animation: "scrollLine 2s ease-in-out infinite" }}
         />
         Scroll
-      </motion.div>
+      </motion.div> */}
     </section>
   );
 }
