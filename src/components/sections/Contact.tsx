@@ -15,41 +15,51 @@ const inputBase =
   "w-full px-4 py-[14px] bg-surface border border-border rounded-[10px] text-txt text-[14px] font-dm outline-none transition-all duration-200 placeholder:text-txt-3 focus:border-accent focus:shadow-[0_0_0_3px_rgba(124,106,247,0.15)] disabled:opacity-50 disabled:cursor-not-allowed";
 
 export default function Contact() {
-  // We consolidate all states into one clean status manager
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
-const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
-  setStatus("loading");
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    
+    // ✅ FIX: Save a reference to the form before any async/await pauses execution
+    const form = e.currentTarget; 
+    
+    setStatus("loading");
 
-  const formData = new FormData(e.currentTarget);
-  const data = Object.fromEntries(formData);
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData);
 
-  try {
-    const response = await fetch("/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    });
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
 
-    const result = await response.json().catch(() => null);
+      let result = null;
 
-    // ✅ FIX: Check BOTH response.ok AND backend success flag
-    if (response.ok && result?.success) {
-      setStatus("success");
-      e.currentTarget.reset();
+      try {
+        result = await response.json();
+      } catch (err) {
+        console.warn("No JSON returned from API");
+      }
 
-      setTimeout(() => setStatus("idle"), 5000);
-    } else {
-      console.error("Server responded with an error:", result);
+      console.log("STATUS:", response.status);
+      console.log("RESULT:", result);
+
+      if (response.ok) {
+        setStatus("success");
+        form.reset(); // ✅ Use the saved reference here!
+
+        setTimeout(() => setStatus("idle"), 5000);
+      } else {
+        setStatus("error");
+      }
+
+    } catch (error) {
+      console.error("Network error:", error);
       setStatus("error");
     }
-
-  } catch (error) {
-    console.error("Network error submitting form:", error);
-    setStatus("error");
-  }
-};
+  };
 
   return (
     <section id="contact" className="py-[120px]">
