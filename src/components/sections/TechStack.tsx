@@ -38,7 +38,7 @@ export default function TechStack() {
               style={{ fontSize: "clamp(32px, 4vw, 52px)" }}>
             Tools of the trade
           </h2>
-          <p className="text-txt-3 font-light leading-[1.7] max-w-[480px]">
+          <p className="text-txt-2 font-light leading-[1.7] max-w-[480px]">
             The technologies I use to build fast, scalable, and maintainable products.
           </p>
         </Reveal>

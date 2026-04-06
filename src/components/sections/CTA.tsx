@@ -30,9 +30,9 @@ export default function CTA() {
                 Let&apos;s build something amazing.
               </span>
             </h2>
-            <p className="text-[17px] text-txt-3 font-light leading-[1.6] mb-11">
+            <p className="text-[17px] text-txt-2 font-light leading-[1.6] mb-11">
               Whether you need a full product from scratch or a senior developer to level up
-              your team — I&apos;m ready to help you ship.
+              your team  I&apos;m ready to help you ship.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Button href="#contact" variant="primary" size="lg">

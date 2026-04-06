@@ -2,7 +2,7 @@ export const SITE = {
   name: "Adrian Earl Abade",
   role: "Full Stack Developer",
   tagline:
-    "Building modern, scalable web applications that drive real results — from concept to production with precision and purpose.",
+    "Building modern, scalable web applications that drive real results  from concept to production with precision and purpose.",
   email: "adrianearl3@gmail.com",
   github: "https://github.com/AdrianEarl000",
   linkedin: "https://linkedin.com/in/Adrian Earl",
@@ -183,24 +183,24 @@ export const ABOUT_SKILLS = [
 
 export const TESTIMONIALS = [
   {
-    name: "Sarah Mitchell",
-    role: "CEO, NovaBuy Inc.",
+    name: "Arthur",
+    role: "CEO, SMP",
     avatar: "🧑",
     avatarClass: "from-violet-500 to-purple-700",
-    text: "Earl delivered our platform 2 weeks ahead of schedule. The code quality was exceptional — our engineering team was genuinely impressed. He thinks like a product engineer, not just a contractor.",
+    text: "Earl delivered beyond expectations. His ability to think in systems, not just code, made a real difference in how our platform performs. He understands execution, scalability, and user behavior — which is rare even among experienced developers.",
   },
   {
-    name: "James Okonkwo",
-    role: "CTO, DataPulse",
-    avatar: "👩",
+    name: "Raphael",
+    role: "COO, SMP",
+    avatar: "🧑",
     avatarClass: "from-pink-400 to-rose-500",
-    text: "We hired Earl to rebuild our analytics dashboard from scratch. The result was a 60% improvement in load times and a UI our customers actually love. Truly full stack — handles design constraints like a pro.",
+    text: "We needed someone who could move fast without compromising structure, and Earl delivered exactly that. His work improved both performance and workflow efficiency. He’s reliable, detail-oriented, and understands how to build with real business impact in mind.",
   },
   {
-    name: "Priya Sharma",
-    role: "Product Lead, ScribeAI",
+    name: "Philip",
+    role: "Head of IT, Highland Banana Corp",
     avatar: "🧑‍🦱",
     avatarClass: "from-sky-400 to-cyan-400",
-    text: "Working with Earl was seamless. His communication is excellent, he asks the right questions upfront, and he consistently goes above and beyond. Our product shipped with zero post-launch bugs.",
+    text: "During his internship, Earl demonstrated strong technical ability and professionalism. He contributed significantly to our HRIS system and consistently showed initiative, clear communication, and a willingness to go beyond what was required.",
   },
 ];

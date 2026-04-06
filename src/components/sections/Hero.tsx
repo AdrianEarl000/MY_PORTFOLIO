@@ -146,7 +146,7 @@ export default function Hero() {
           {/* Tagline */}
           <motion.p
             {...fadeUp(0.3)}
-            className="text-txt-3 font-light leading-[1.7] max-w-[540px] mb-[52px]"
+            className="text-txt-2 font-light leading-[1.7] max-w-[540px] mb-[52px]"
             style={{ fontSize: "clamp(16px, 1.8vw, 19px)" }}
           >
             {SITE.tagline}

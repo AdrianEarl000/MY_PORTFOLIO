@@ -20,7 +20,7 @@ export default function Testimonials() {
           >
             What clients say
           </h2>
-          <p className="text-txt-3 font-light leading-[1.7] max-w-[480px]">
+          <p className="text-txt-2 font-light leading-[1.7] max-w-[480px]">
             Trusted by founders, CTOs, and product teams to deliver exceptional results.
           </p>
         </Reveal>
@@ -39,7 +39,7 @@ export default function Testimonials() {
               {/* Decorative quote mark */}
               <div
                 className="absolute top-5 right-7 font-syne text-[80px] text-accent leading-none pointer-events-none"
-                style={{ opacity: 0.12 }}
+                style={{ opacity: 0.5 }}
               >
                 &ldquo;
               </div>

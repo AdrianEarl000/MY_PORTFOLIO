@@ -12,22 +12,48 @@ const GithubIcon = () => (
 );
 
 const inputBase =
-  "w-full px-4 py-[14px] bg-surface border border-border rounded-[10px] text-txt text-[14px] font-dm outline-none transition-all duration-200 placeholder:text-txt-3 focus:border-accent focus:shadow-[0_0_0_3px_rgba(124,106,247,0.15)]";
+  "w-full px-4 py-[14px] bg-surface border border-border rounded-[10px] text-txt text-[14px] font-dm outline-none transition-all duration-200 placeholder:text-txt-3 focus:border-accent focus:shadow-[0_0_0_3px_rgba(124,106,247,0.15)] disabled:opacity-50 disabled:cursor-not-allowed";
 
 export default function Contact() {
-  const [submitted, setSubmitted] = useState(false);
+  // We consolidate all states into one clean status manager
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 3000);
+    setStatus("loading");
+
+    const formData = new FormData(e.currentTarget);
+    const data = Object.fromEntries(formData);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      // Parse JSON from backend to prevent false failures
+      const result = await response.json().catch(() => null);
+
+      if (response.ok) {
+        setStatus("success");
+        e.currentTarget.reset(); // Clear the form
+        setTimeout(() => setStatus("idle"), 5000); // Hide success message after 5 seconds
+      } else {
+        console.error("Server responded with an error:", result);
+        setStatus("error");
+      }
+    } catch (error) {
+      console.error("Network error submitting form:", error);
+      setStatus("error");
+    }
   };
 
   return (
     <section id="contact" className="py-[120px]">
       <div className="max-w-[1200px] mx-auto px-10">
         <div className="grid grid-cols-[1fr_1.4fr] gap-20 max-lg:grid-cols-1 max-lg:gap-12">
-          {/* Info */}
+          {/* Info Side */}
           <Reveal direction="left">
             <SectionLabel text="Contact" />
             <h2
@@ -62,26 +88,53 @@ export default function Contact() {
             </div>
           </Reveal>
 
-          {/* Form */}
+          {/* Form Side */}
           <Reveal delay={0.15}>
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+              
+              {/* MODERN UI NOTIFICATIONS */}
+              {status === "success" && (
+                <div className="flex items-center gap-3 p-4 rounded-[10px] bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 font-medium text-[14px] transition-all">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                  </svg>
+                  Message sent successfully! I will get back to you soon.
+                </div>
+              )}
+
+              {status === "error" && (
+                <div className="flex items-center gap-3 p-4 rounded-[10px] bg-red-500/10 border border-red-500/20 text-red-500 font-medium text-[14px] transition-all">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="15" y1="9" x2="9" y2="15"></line>
+                    <line x1="9" y1="9" x2="15" y2="15"></line>
+                  </svg>
+                  Failed to send message. Please try again.
+                </div>
+              )}
+
               <div className="grid grid-cols-2 gap-4 max-sm:grid-cols-1">
                 <div className="flex flex-col gap-2">
                   <label className="text-[13px] font-medium text-txt-2">Your Name</label>
                   <input
+                    name="name"
                     type="text"
                     placeholder="John Smith"
                     className={inputBase}
                     required
+                    disabled={status === "loading"}
                   />
                 </div>
                 <div className="flex flex-col gap-2">
                   <label className="text-[13px] font-medium text-txt-2">Email Address</label>
                   <input
+                    name="email"
                     type="email"
                     placeholder="john@company.com"
                     className={inputBase}
                     required
+                    disabled={status === "loading"}
                   />
                 </div>
               </div>
@@ -89,32 +142,46 @@ export default function Contact() {
               <div className="flex flex-col gap-2">
                 <label className="text-[13px] font-medium text-txt-2">Project Type</label>
                 <input
+                  name="project"
                   type="text"
                   placeholder="Web App, SaaS, E-commerce..."
                   className={inputBase}
+                  disabled={status === "loading"}
                 />
               </div>
 
               <div className="flex flex-col gap-2">
                 <label className="text-[13px] font-medium text-txt-2">Message</label>
                 <textarea
+                  name="message"
                   placeholder="Tell me about your project, timeline, and budget..."
                   className={`${inputBase} min-h-[120px] resize-none leading-[1.6]`}
                   required
+                  disabled={status === "loading"}
                 />
               </div>
 
               <button
                 type="submit"
-                disabled={submitted}
+                disabled={status === "loading" || status === "success"}
                 className={`w-full flex items-center justify-center gap-2 py-4 px-8 rounded-[10px] font-semibold text-[15px] text-white border-none cursor-pointer transition-all duration-200 ${
-                  submitted
+                  status === "success"
                     ? "bg-emerald-500 cursor-default"
+                    : status === "loading"
+                    ? "bg-accent/70 cursor-wait"
                     : "bg-accent hover:bg-[#8b7af8] hover:-translate-y-0.5 hover:shadow-[0_12px_32px_rgba(124,106,247,0.35)]"
                 }`}
               >
-                {submitted ? (
-                  "✓ Message Sent!"
+                {status === "loading" ? (
+                  <>
+                    <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Sending...
+                  </>
+                ) : status === "success" ? (
+                  "Message Sent!"
                 ) : (
                   <>
                     Send Message

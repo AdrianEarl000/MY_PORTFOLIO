@@ -20,7 +20,7 @@ export default function Process() {
           >
             My process
           </h2>
-          <p className="text-txt-3 font-light leading-[1.7] max-w-[480px]">
+          <p className="text-txt-2 font-light leading-[1.7] max-w-[480px]">
             A structured, transparent approach that keeps every project on time and on scope.
           </p>
         </Reveal>
@@ -61,7 +61,7 @@ export default function Process() {
               <div className="font-syne font-bold text-[16px] text-txt tracking-[-0.3px] mb-[10px]">
                 {step.name}
               </div>
-              <div className="text-[13px] text-txt-3 leading-[1.7] font-light">
+              <div className="text-[13px] text-txt-2 leading-[1.7] font-light">
                 {step.desc}
               </div>
             </motion.div>

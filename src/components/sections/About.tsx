@@ -60,10 +60,10 @@ export default function About() {
 
             <div className="mt-6 space-y-4">
               <p className="text-[15px] text-txt-2 leading-[1.8] font-light">
-                Hi, I&apos;m Adrian Earl — a{" "}
+                Hi, I&apos;m Adrian Earl  a{" "}
                 <strong className="text-txt font-medium">Full Stack Developer</strong> based in
-                San Francisco with 5+ years of experience turning ambitious ideas into
-                production-ready products.
+                Philippines with 5+ years of experience turning ambitious ideas into
+                production ready products.
               </p>
               <p className="text-[15px] text-txt-2 leading-[1.8] font-light">
                 I specialize in building{" "}
