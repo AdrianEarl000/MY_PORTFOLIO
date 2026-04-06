@@ -32,13 +32,14 @@ ${message}
       `,
     };
 
-    // Use Nodemailer's native promise instead of a manual wrapper.
-    // Vercel serverless functions handle this much more cleanly.
+    // Send the email
     await transporter.sendMail(mailOptions);
+    
+    // THE FIX: Force Nodemailer to close the open connection so Vercel knows we are done!
+    transporter.close();
 
     return NextResponse.json({ message: "Email sent successfully" }, { status: 200 });
   } catch (error) {
-    // We log the specific error so it shows up in Vercel's dashboard
     console.error("Vercel API Error:", error);
     return NextResponse.json({ error: "Failed to send email" }, { status: 500 });
   }
