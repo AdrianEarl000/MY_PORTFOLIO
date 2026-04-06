@@ -11,7 +11,7 @@ export default function Footer() {
   const socials = [
     { label: "GitHub", icon: <GithubIcon />, href: SITE.github },
     { label: "LinkedIn", icon: "💼", href: SITE.linkedin },
-    { label: "Twitter", icon: "🐦", href: SITE.twitter },
+    // { label: "Twitter", icon: "🐦", href: SITE.twitter },
   ];
 
   return (

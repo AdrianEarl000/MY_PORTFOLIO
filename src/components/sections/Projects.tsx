@@ -109,7 +109,7 @@ export default function Projects() {
             Selected projects
           </h2>
           <p className="text-txt-2 font-light leading-[1.7] max-w-[480px]">
-            A curated selection of products I&apos;ve built — each designed to solve real problems at scale.
+            A curated selection of products I&apos;ve built each designed to solve real problems at scale.
           </p>
         </Reveal>
 

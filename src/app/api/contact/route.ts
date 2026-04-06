@@ -32,21 +32,14 @@ ${message}
       `,
     };
 
-    // We removed the verify block and go straight to sending
-    await new Promise((resolve, reject) => {
-      transporter.sendMail(mailOptions, (err, info) => {
-        if (err) {
-          console.error("SendMail Error:", err);
-          reject(err);
-        } else {
-          resolve(info);
-        }
-      });
-    });
+    // Use Nodemailer's native promise instead of a manual wrapper.
+    // Vercel serverless functions handle this much more cleanly.
+    await transporter.sendMail(mailOptions);
 
     return NextResponse.json({ message: "Email sent successfully" }, { status: 200 });
   } catch (error) {
-    console.error("Final API Route Error:", error);
+    // We log the specific error so it shows up in Vercel's dashboard
+    console.error("Vercel API Error:", error);
     return NextResponse.json({ error: "Failed to send email" }, { status: 500 });
   }
 }

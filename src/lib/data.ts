@@ -5,7 +5,8 @@ export const SITE = {
     "Building modern, scalable web applications that drive real results  from concept to production with precision and purpose.",
   email: "adrianearl3@gmail.com",
   github: "https://github.com/AdrianEarl000",
-  linkedin: "https://linkedin.com/in/Adrian Earl",
+  linkedin: "https://linkedin.com/in/adrian-earl-abade-1040b136a",
+
   twitter: "https://twitter.com/Adrian Earl",
   stats: [
     { value: "5", suffix: "+", label: "Years Experience" },

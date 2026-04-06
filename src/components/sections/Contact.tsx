@@ -62,7 +62,7 @@ export default function Contact() {
             >
               Get in touch
             </h2>
-            <p className="text-[15px] text-txt-3 font-light leading-[1.7] mb-10">
+            <p className="text-[15px] text-txt-2 font-light leading-[1.7] mb-10">
               I&apos;m currently taking on new clients. Send a message and I&apos;ll get back to you within 24 hours.
             </p>
 
