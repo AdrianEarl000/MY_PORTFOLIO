@@ -5,6 +5,14 @@ export async function POST(req: Request) {
   try {
     const { name, email, project, message } = await req.json();
 
+    // Basic validation
+    if (!name || !email || !message) {
+      return NextResponse.json(
+        { success: false, error: "Missing required fields" },
+        { status: 400 }
+      );
+    }
+
     const transporter = nodemailer.createTransport({
       host: 'smtp.gmail.com',
       port: 465,
@@ -32,15 +40,18 @@ ${message}
       `,
     };
 
-    // Send the email
     await transporter.sendMail(mailOptions);
-    
-    // THE FIX: Force Nodemailer to close the open connection so Vercel knows we are done!
-    transporter.close();
 
-    return NextResponse.json({ message: "Email sent successfully" }, { status: 200 });
+    return NextResponse.json(
+      { success: true, message: "Email sent successfully" },
+      { status: 200 }
+    );
+
   } catch (error) {
     console.error("Vercel API Error:", error);
-    return NextResponse.json({ error: "Failed to send email" }, { status: 500 });
+    return NextResponse.json(
+      { success: false, error: "Failed to send email" },
+      { status: 500 }
+    );
   }
 }

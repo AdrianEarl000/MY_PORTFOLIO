@@ -18,36 +18,38 @@ export default function Contact() {
   // We consolidate all states into one clean status manager
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setStatus("loading");
+const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  setStatus("loading");
 
-    const formData = new FormData(e.currentTarget);
-    const data = Object.fromEntries(formData);
+  const formData = new FormData(e.currentTarget);
+  const data = Object.fromEntries(formData);
 
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
+  try {
+    const response = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
 
-      // Parse JSON from backend to prevent false failures
-      const result = await response.json().catch(() => null);
+    const result = await response.json().catch(() => null);
 
-      if (response.ok) {
-        setStatus("success");
-        e.currentTarget.reset(); // Clear the form
-        setTimeout(() => setStatus("idle"), 5000); // Hide success message after 5 seconds
-      } else {
-        console.error("Server responded with an error:", result);
-        setStatus("error");
-      }
-    } catch (error) {
-      console.error("Network error submitting form:", error);
+    // ✅ FIX: Check BOTH response.ok AND backend success flag
+    if (response.ok && result?.success) {
+      setStatus("success");
+      e.currentTarget.reset();
+
+      setTimeout(() => setStatus("idle"), 5000);
+    } else {
+      console.error("Server responded with an error:", result);
       setStatus("error");
     }
-  };
+
+  } catch (error) {
+    console.error("Network error submitting form:", error);
+    setStatus("error");
+  }
+};
 
   return (
     <section id="contact" className="py-[120px]">
