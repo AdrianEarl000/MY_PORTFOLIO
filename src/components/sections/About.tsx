@@ -47,13 +47,13 @@ export default function About() {
                   className="font-syne font-extrabold text-[28px] text-txt tracking-[-1px]
                                   max-lg:text-[20px]"
                 >
-                  40<span className="text-accent-2">+</span>
+                  30<span className="text-accent-2">+</span>
                 </div>
                 <div
                   className="text-[12px] text-txt-2 mt-0.5
                                   max-lg:text-[10px]"
                 >
-                  Projects completed
+                  Projects Built
                 </div>
               </div>
             </div>
