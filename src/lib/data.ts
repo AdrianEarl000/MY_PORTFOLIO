@@ -9,9 +9,9 @@ export const SITE = {
 
   twitter: "https://twitter.com/Adrian Earl",
   stats: [
-    { value: "5", suffix: "+", label: "Years Experience" },
-    { value: "40", suffix: "+", label: "Projects Delivered" },
-    { value: "98", suffix: "%", label: "Client Satisfaction" },
+    { value: "4", suffix: "+", label: "Years Coding" },
+    { value: "30", suffix: "+", label: "Projects Built" },
+    { value: "109", suffix: "+", label: "Commits This Year" },
   ],
 };
 
@@ -26,18 +26,20 @@ export const TECH_STACK = {
   ],
   Backend: [
     { icon: "🟢", name: "Node.js" },
-    { icon: "⚡", name: "tRPC" },
+    // { icon: "⚡", name: "tRPC" },
     { icon: "🔷", name: "Prisma" },
     { icon: "🐘", name: "PostgreSQL" },
-    { icon: "🔥", name: "Redis" },
-    { icon: "🌐", name: "REST / GraphQL" },
+    // { icon: "🔥", name: "Redis" },
+    { icon: "🌐", name: "RESTful APIs" },
   ],
   "Tools & Infrastructure": [
     { icon: "🐙", name: "GitHub" },
-    { icon: "🐳", name: "Docker" },
+    // { icon: "🐳", name: "Docker" },
     { icon: "☁️", name: "Vercel" },
-    { icon: "🔶", name: "AWS" },
-    { icon: "📊", name: "Datadog" },
+    // { icon: "🔶", name: "AWS" },
+    // { icon: "📊", name: "Datadog" },
+    { icon: "🟢", name: "Supabase" },
+    { icon: "🐘", name: "Neon" },
   ],
 };
 
