@@ -100,7 +100,7 @@ export const PROJECTS = [
     label: "Task Management",
     featured: true,
     demo: "#",
-    github: "#",
+    github: "https://github.com/AdrianEarl000/FlowBoard.git",
   },
   {
     id: "viowrite",
@@ -206,4 +206,47 @@ export const TESTIMONIALS = [
     avatarClass: "from-sky-400 to-cyan-400",
     text: "During his internship, Earl demonstrated strong technical ability and professionalism. He contributed significantly to our HRIS system and consistently showed initiative, clear communication, and a willingness to go beyond what was required.",
   },
+];
+
+export const ACHIEVEMENTS = [
+  {
+    id: 1,
+    type: "Award",
+    title: "TechnoFair Game Competition",
+    issuer: "Holy Cross of Davao College",
+    date: "Dec 2024",
+    description: "Awarded Runner-Up in the TechnoFair inter-school game development competition, showcasing an original game built from scratch. Recognized for creativity, gameplay design, and technical execution.",
+    link: null, 
+    image: null, // No image for this one
+  },
+  {
+    id: 2,
+    type: "Certification",
+    title: "Build Complete CMS Blog in PHP",
+    issuer: "Udemy",
+    date: "Dec 13, 2024",
+    description: "Comprehensive course on building a Content Management System from scratch using PHP, MySQL, Bootstrap, and PDO.",
+    link: "#", 
+    image: "/images/udemy.png", // Add your actual image paths here
+  },
+  {
+    id: 3,
+    type: "Award",
+    title: "Dean's Lister / Academic Excellence",
+    issuer: "Holy Cross of Davao College",
+    date: "2024",
+    description: "Recognized for outstanding academic performance in the Bachelor of Science in Information Technology program.",
+    link: null,
+    image: "/certs/deans-lister.jpg", // Add your actual image paths here
+  },
+  {
+    id: 4,
+    type: "Certification",
+    title: "Introduction to SQL",
+    issuer: "Simplilearn",
+    date: "Aug 18, 2024",
+    description: "Verified certification covering the fundamentals of SQL queries, database management, and data manipulation.",
+    link: "#", 
+    image: "/images/simplelearn.png", // Add your actual image paths here
+  }
 ];

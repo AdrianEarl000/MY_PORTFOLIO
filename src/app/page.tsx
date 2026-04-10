@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/sections/Hero";
 import TechStack from "@/components/sections/TechStack";
 import Projects from "@/components/sections/Projects";
+import Certification from "@/components/sections/Certification";
 import Process from "@/components/sections/Process";
 import About from "@/components/sections/About";
 import Testimonials from "@/components/sections/Testimonials";
@@ -9,6 +10,7 @@ import CTA from "@/components/sections/CTA";
 import Contact from "@/components/sections/Contact";
 import Footer from "@/components/Footer";
 
+  
 export default function Home() {
   return (
     <>
@@ -17,6 +19,7 @@ export default function Home() {
         <Hero />
         <TechStack />
         <Projects />
+        <Certification />
         <Process />
         <About />
         <Testimonials />
