@@ -5,8 +5,6 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { SITE } from "@/lib/data";
 import Workspace3D from "@/components/ui/Workspace/Workspace3D";
-// import Terminal from "@/components/ui/Terminal";
-// import Scene3D from "@/components/ui/Scene3D"; // <-- Added Import
 
 function fadeUp(delay = 0) {
   return {
@@ -39,7 +37,8 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center pt-[120px] pb-20 overflow-hidden"
+      // CHANGED: Use flex-col to allow stacking on mobile, while centering vertically
+      className="relative min-h-screen flex flex-col justify-center pt-[120px] pb-20 overflow-hidden"
     >
       {/* Orbs */}
       <div
@@ -83,39 +82,16 @@ export default function Hero() {
           WebkitMaskImage: "radial-gradient(ellipse 60% 60% at 50% 50%, black, transparent)",
         }}
       />
-      {/* INTERACTIVE DESIGNS */}
 
-      {/*2 Interactive Terminal */}
-      {/* <div className="absolute top-1/2 -translate-y-1/2 right-10 w-[45%] z-20 max-lg:hidden perspective-1000">
-        <motion.div
-          initial={{ opacity: 0, x: 50, rotateY: -10 }}
-          animate={{ opacity: 1, x: 0, rotateY: -15 }}
-          transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
-          className="w-full transform-gpu"
-          style={{ transformStyle: 'preserve-3d' }}
-        > */}
-
-          {/* A subtle glowing drop-shadow behind the terminal */}
-          {/* <div className="absolute -inset-4 bg-gradient-to-r from-accent-2/20 to-teal/20 blur-2xl -z-10 rounded-full opacity-50" />
-          <Terminal />
-        </motion.div>
-      </div> */}
-
-{/* 3D Workspace Scene */}
-      {/* 1. Removed pointer-events-none here so it can be touched. 
-          Slightly increased mobile opacity (opacity-50) so it's easier to see. */}
-      <div className="absolute top-[20%] lg:top-1/2 lg:-translate-y-[45%] right-0 w-full lg:w-[55%] z-0 lg:z-20 flex justify-center items-center opacity-50 lg:opacity-100">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] lg:w-[500px] h-[300px] lg:h-[500px] bg-gradient-to-tr from-accent-2/10 to-teal/10 blur-[80px] lg:blur-[120px] -z-10 rounded-full opacity-50 pointer-events-none" />
+      {/* Main Content Wrapper */}
+      {/* CHANGED: Swaps between flex-col for mobile stacking and standard block for desktop */}
+      <div className="max-w-[1200px] mx-auto px-6 md:px-10 relative z-10 w-full flex flex-col lg:block">
         
-        <Workspace3D />
-      </div>
-
-      {/* Main Content */}
-      {/* 2. Added `pointer-events-none` here so touches pass through the empty space to the 3D scene behind it */}
-      <div className="max-w-[1200px] mx-auto px-10 relative z-10 w-full pointer-events-none">
-        <div className="max-w-[860px]">
+        {/* TEXT CONTENT */}
+        <div className="max-w-[860px] pointer-events-none relative z-20">
+          
           {/* Badge */}
-          <motion.div {...fadeUp(0)}>
+          <motion.div {...fadeUp(0)} className="pointer-events-auto w-max">
             <div className="inline-flex items-center gap-2 px-4 py-[7px] bg-surface border border-border-2 rounded-full text-[13px] text-txt-2 mb-9">
               <span
                 className="w-[7px] h-[7px] rounded-full bg-teal animate-pulse2"
@@ -128,7 +104,7 @@ export default function Hero() {
           {/* Name */}
           <motion.h1
             {...fadeUp(0.1)}
-            className="font-syne font-extrabold leading-[0.95] tracking-[-3px] text-txt mb-3"
+            className="font-syne font-extrabold leading-[0.95] tracking-[-3px] text-txt mb-3 pointer-events-auto w-max"
             style={{ fontSize: "clamp(52px, 8vw, 96px)" }}
           >
             {SITE.name.split(" ")[0]}
@@ -139,7 +115,7 @@ export default function Hero() {
           {/* Role */}
           <motion.p
             {...fadeUp(0.2)}
-            className="font-syne font-semibold text-txt-2 tracking-[-1px] mb-7"
+            className="font-syne font-semibold text-txt-2 tracking-[-1px] mb-7 pointer-events-auto w-max"
             style={{ fontSize: "clamp(22px, 3.5vw, 38px)" }}
           >
             {SITE.role}
@@ -148,55 +124,57 @@ export default function Hero() {
           {/* Tagline */}
           <motion.p
             {...fadeUp(0.3)}
-            className="text-txt-2 font-light leading-[1.7] max-w-[540px] mb-[52px]"
+            className="text-txt-2 font-light leading-[1.7] max-w-[540px] mb-[52px] pointer-events-auto"
             style={{ fontSize: "clamp(16px, 1.8vw, 19px)" }}
           >
             {SITE.tagline}
           </motion.p>
 
           {/* CTAs */}
-          {/* 3. Added `pointer-events-auto` back to the buttons so they can still be clicked! */}
           <motion.div {...fadeUp(0.4)} className="flex flex-wrap gap-4 pointer-events-auto">
             <Button href="#projects" variant="primary" size="default">
               View Projects
-              {/* SVG omitted for brevity, keep your existing SVG here */}
+              {/* Note: SVG omitted for brevity, paste your SVG here */}
             </Button>
             <Button href="#contact" variant="secondary" size="default">
               Hire Me
-              {/* SVG omitted for brevity, keep your existing SVG here */}
+              {/* Note: SVG omitted for brevity, paste your SVG here */}
             </Button>
           </motion.div>
 
-          {/* Stats */}
+          {/* Stats - UPDATED LAYOUT */}
           <motion.div
             {...fadeUp(0.5)}
-            className="flex flex-wrap gap-12 mt-[72px] pt-12 border-t border-border"
+            // Mobile: spaced out with justify-between and smaller gaps/padding.
+            // Desktop: restore large gaps and left-alignment.
+            className="flex flex-wrap justify-between md:justify-start gap-4 md:gap-12 mt-10 md:mt-[72px] pt-8 md:pt-12 border-t border-border pointer-events-auto"
           >
             {SITE.stats.map((stat) => (
-              <div key={stat.label}>
-                <div className="font-syne font-extrabold text-[32px] text-txt tracking-[-1px] leading-none">
+              <div key={stat.label} className="min-w-fit text-left">
+                <div className="font-syne font-extrabold text-[28px] md:text-[32px] text-txt tracking-[-1px] leading-none">
                   {stat.value}
                   <span className="text-accent-2">{stat.suffix}</span>
                 </div>
-                <div className="text-[13px] text-txt-3 mt-1">{stat.label}</div>
+                <div className="text-[12px] md:text-[13px] text-txt-3 mt-1">{stat.label}</div>
               </div>
             ))}
           </motion.div>
         </div>
+
+        {/* 3D WORKSPACE SCENE - IDEA B IMPLEMENTATION */}
+        {/* Mobile: relative block that flows below stats. Desktop: absolute positioned to the right. */}
+        <div className="relative mt-16 w-full h-[350px] lg:mt-0 lg:absolute lg:top-1/2 lg:-translate-y-[45%] lg:right-0 lg:w-[55%] lg:h-auto z-10 lg:z-10 flex justify-center items-center opacity-100 pointer-events-none">
+          
+          {/* Background Glow */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] lg:w-[500px] h-[250px] lg:h-[500px] bg-gradient-to-tr from-accent-2/10 to-teal/10 blur-[60px] lg:blur-[120px] -z-10 rounded-full opacity-50" />
+          
+          {/* Restored interaction to the 3D object only */}
+          <div className="relative w-full h-full pointer-events-auto flex justify-center items-center">
+             <Workspace3D />
+          </div>
+        </div>
+
       </div>
-      {/* Scroll indicator */}
-      {/* <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.8, duration: 0.6 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-txt-3 text-[12px] tracking-[1px] uppercase font-mono"
-      >
-        <div
-          className="w-px h-12 bg-gradient-to-b from-accent-2 to-transparent animate-scroll-line"
-          style={{ animation: "scrollLine 2s ease-in-out infinite" }}
-        />
-        Scroll
-      </motion.div> */}
     </section>
   );
 }

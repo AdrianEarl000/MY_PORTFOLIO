@@ -324,7 +324,7 @@ function ModeBadge({ isRetro, isTransitioning }: { isRetro: boolean; isTransitio
         boxShadow: isRetro ? "0 0 6px #00FF9C" : "0 0 6px #7C6AF7",
         animation: "badgePulse 2s ease-in-out infinite",
       }} />
-      {isRetro ? "RETRO MODE" : "NEON MODE"}
+      {/* {isRetro ? "RETRO MODE" : "NEON MODE"} */}
     </div>
   );
 }
