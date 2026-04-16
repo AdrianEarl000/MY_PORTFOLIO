@@ -37,7 +37,6 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      // CHANGED: Use flex-col to allow stacking on mobile, while centering vertically
       className="relative min-h-screen flex flex-col justify-center pt-[120px] pb-20 overflow-hidden"
     >
       {/* Orbs */}
@@ -84,11 +83,11 @@ export default function Hero() {
       />
 
       {/* Main Content Wrapper */}
-      {/* CHANGED: Swaps between flex-col for mobile stacking and standard block for desktop */}
       <div className="max-w-[1200px] mx-auto px-6 md:px-10 relative z-10 w-full flex flex-col lg:block">
         
         {/* TEXT CONTENT */}
-        <div className="max-w-[860px] pointer-events-none relative z-20">
+        {/* CHANGED: Added lg:max-w-[600px] xl:max-w-[650px] to strictly contain the text on desktop */}
+        <div className="max-w-[860px] lg:max-w-[600px] xl:max-w-[650px] pointer-events-none relative z-20">
           
           {/* Badge */}
           <motion.div {...fadeUp(0)} className="pointer-events-auto w-max">
@@ -142,11 +141,9 @@ export default function Hero() {
             </Button>
           </motion.div>
 
-          {/* Stats - UPDATED LAYOUT */}
+          {/* Stats */}
           <motion.div
             {...fadeUp(0.5)}
-            // Mobile: spaced out with justify-between and smaller gaps/padding.
-            // Desktop: restore large gaps and left-alignment.
             className="flex flex-wrap justify-between md:justify-start gap-4 md:gap-12 mt-10 md:mt-[72px] pt-8 md:pt-12 border-t border-border pointer-events-auto"
           >
             {SITE.stats.map((stat) => (
@@ -161,14 +158,15 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* 3D WORKSPACE SCENE - IDEA B IMPLEMENTATION */}
-        {/* Mobile: relative block that flows below stats. Desktop: absolute positioned to the right. */}
-        <div className="relative mt-16 w-full h-[350px] lg:mt-0 lg:absolute lg:top-1/2 lg:-translate-y-[45%] lg:right-0 lg:w-[55%] lg:h-auto z-10 lg:z-10 flex justify-center items-center opacity-100 pointer-events-none">
+{/* 3D WORKSPACE SCENE */}
+        {/* CHANGED: Restored the width to lg:w-[55%] so it renders at its original full size, 
+            and pushed it into the empty right space using lg:-right-[10%] */}
+        <div className="relative mt-16 w-full h-[350px] lg:mt-0 lg:absolute lg:top-1/2 lg:-translate-y-[45%] lg:-right-[10%] lg:w-[55%] lg:h-[600px] z-10 flex justify-center items-center opacity-100 pointer-events-none">
           
           {/* Background Glow */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] lg:w-[500px] h-[250px] lg:h-[500px] bg-gradient-to-tr from-accent-2/10 to-teal/10 blur-[60px] lg:blur-[120px] -z-10 rounded-full opacity-50" />
           
-          {/* Restored interaction to the 3D object only */}
+          {/* Interaction wrapper */}
           <div className="relative w-full h-full pointer-events-auto flex justify-center items-center">
              <Workspace3D />
           </div>

@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Syne, DM_Sans, DM_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ui/Workspace/ThemeProvider";
+import GlobalBackground from "@/components/ui/Workspace/GlobalBackground";
+import RetroSpaceship from "@/components/ui/Workspace/RetroSpaceship";
 
 const syne = Syne({
   subsets: ["latin"],
@@ -60,7 +62,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${syne.variable} ${dmSans.variable} ${dmMono.variable}`}>
-      <body className="font-dm antialiased"><ThemeProvider>{children}</ThemeProvider></body>
+      <body className="font-dm antialiased"><ThemeProvider>{children}</ThemeProvider><GlobalBackground /><RetroSpaceship /></body>
     </html>
   );
 }
