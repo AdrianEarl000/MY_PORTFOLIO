@@ -4,6 +4,10 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/ui/Workspace/ThemeProvider";
 import GlobalBackground from "@/components/ui/Workspace/GlobalBackground";
 import RetroSpaceship from "@/components/ui/Workspace/RetroSpaceship";
+import PortfolioPage from "@/components/ui/Workspace/PageLoader.usage";
+
+
+
 
 const syne = Syne({
   subsets: ["latin"],
@@ -62,7 +66,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${syne.variable} ${dmSans.variable} ${dmMono.variable}`}>
-      <body className="font-dm antialiased"><ThemeProvider>{children}</ThemeProvider><GlobalBackground /><RetroSpaceship /></body>
+      <body className="font-dm antialiased"><ThemeProvider>{children}<PortfolioPage/></ThemeProvider><GlobalBackground /><RetroSpaceship />       </body>
     </html>
   );
 }
